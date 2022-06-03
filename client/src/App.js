@@ -1,22 +1,24 @@
-
-import './App.css';
 import React, {useState} from 'react';
 import Header from './components/Header';
-import AddNew from './components/AddNew';
+import Dashboard from './pages/Dashboard';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
+
+import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 
 function App() {
-  const [todos, setTodos] = useState([])
-
-  const addNewTodo = (newTodoToAdd) => {
-    setTodos([...todos, newTodoToAdd])
-  }
-
   return (
-    <div className="App">
+    <Router>
       <Header />
-      <AddNew addNewTodo={addNewTodo} />
-    </div>
-  );
+      <Routes>
+        <Route path='/' exact element={<Dashboard />} />
+        <Route path='/login' exact element={<Login />} />
+        <Route path='/signup' exact element={<Signup />} />
+
+      </Routes>
+    </Router>
+  )
+  
 }
 
 export default App;

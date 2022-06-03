@@ -5,6 +5,11 @@ import Button from '@mui/material/Button';
 
 const AddNew = ({ addNewTodo }) => {
   const [newTodo, setNewTodo] = useState('');
+
+  const handleAddClick = () => {
+    addNewTodo(newTodo);
+    setNewTodo('');
+  }
   return (
     <Box
       component="form"
@@ -14,8 +19,8 @@ const AddNew = ({ addNewTodo }) => {
       noValidate
       autoComplete="off"
     >
-      <TextField value={newTodo} onChange={(e) => setNewTodo(e.target.value)} sx={{height: '50px'}} id="outlined-basic" label="Outlined" variant="outlined" />
-      <Button sx={{height: '50px', width: '25px'}} variant="outlined">Add</Button>
+      <TextField  value={newTodo} onChange={(e) => setNewTodo(e.target.value)} sx={{height: '50px'}} id="outlined-basic" label="Outlined" variant="outlined" />
+      <Button sx={{height: '50px', width: '25px'}} variant="outlined" onClick={handleAddClick}>Add</Button>
     </Box>
   )
 }
